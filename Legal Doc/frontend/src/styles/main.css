@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.entity-highlight {
+    @apply bg-yellow-100 p-1 rounded border-b-2 border-yellow-300;
+}
+
+.legal-term {
+    @apply text-red-600 font-medium;
+}

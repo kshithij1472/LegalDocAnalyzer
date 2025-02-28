@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/legalai
+    depends_on:
+      - mongo
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
